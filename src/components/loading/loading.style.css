@@ -1,0 +1,30 @@
+.loading-container {
+	width: 200px;
+	height: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.loading-circle {
+	width: 200px;
+	height: 200px;
+
+	border: 10px solid transparent;
+	border-bottom: 10px solid rgb(9, 46, 105);
+	border-radius: 50%;
+
+	animation-name: rotateCircle;
+	animation-duration: 700ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes rotateCircle {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

@@ -1,8 +1,18 @@
-import { GET_ALL_USERS } from './action.types';
+import { GET_ALL_POSTS } from './action.types';
 import * as api from '../api/index';
 
 // Get all users from the API
-export const getAllUsers = () => async (dispatch) => {
+export const getAllPosts = () => async (dispatch) => {
 	try {
-	} catch (error) {}
+		const { data } = await api.getAllPosts();
+
+		// Sort by Dates
+		const sortedData = data.data.sort(
+			(a, b) => new Date(b.publishDate) - new Date(a.publishDate)
+		);
+
+		dispatch({ type: GET_ALL_POSTS, payload: sortedData });
+	} catch (error) {
+		console.error(error);
+	}
 };

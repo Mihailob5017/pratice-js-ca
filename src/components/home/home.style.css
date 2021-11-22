@@ -1,0 +1,27 @@
+.homepage-header {
+	color: rgb(9, 46, 105);
+}
+.add-btn {
+	margin: 10px auto;
+	background: rgb(9, 46, 105);
+	font-size: 24px;
+	color: white;
+	display: flex;
+	border: transparent;
+	font-weight: bold;
+	padding: 5px 15px;
+	border-radius: 3px;
+	cursor: pointer;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.add-btn:hover {
+	background: rgb(1, 27, 65);
+	transition: 300ms;
+}
+.add-btn img {
+	margin-right: 2px;
+	width: 24px;
+	height: 24px;
+}

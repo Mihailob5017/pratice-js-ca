@@ -1,15 +1,15 @@
-import { GET_ALL_USERS } from './action.types';
+import { GET_ALL_POSTS } from './action.types';
 
 const initialState = {
-	users: [],
+	posts: [],
 };
 
 const rootReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GET_ALL_USERS:
+		case GET_ALL_POSTS:
 			return {
 				...state,
-				users: action.payload,
+				posts: action.payload,
 			};
 		default:
 			return state;

@@ -1,5 +1,6 @@
 .container {
 	width: 1200px;
-	height: 96vh;
+	height: 92vh;
 	margin: 30px auto;
+	overflow-y: hidden;
 }
