@@ -22,9 +22,8 @@ import CommentList from '../comments/comment-list.component';
 // Code
 const Profile = ({ post, comments }) => {
 	// Getting the ID
-	let location = useLocation();
+	const location = useLocation();
 	const id = location.pathname.split('/')[1];
-
 	const [isLoading, setLoading] = useState(true);
 	const dispatch = useDispatch();
 

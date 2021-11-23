@@ -15,7 +15,12 @@ const App = () => {
 				<Routes>
 					<Route path='/' exact element={<Homepage />} />
 					<Route path='/create' exact element={<Create />} />
-					<Route path='/:id' element={<Profile />} />
+					<Route path='/:id' exact element={<Profile />} />
+					<Route
+						path='/:id/edit'
+						exact
+						element={<Create isBeingEdited={true} />}
+					/>
 				</Routes>
 			</div>
 		</BrowserRouter>

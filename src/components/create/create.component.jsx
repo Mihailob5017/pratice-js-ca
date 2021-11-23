@@ -7,19 +7,23 @@ import * as api from '../../api/index';
 import FileBase from 'react-file-base64';
 
 // React Router Dom
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
 
 // Code
-const Create = () => {
-	const [id, setId] = useState('');
-	const [likes, setLikes] = useState(0);
-	const [text, setText] = useState('');
-	const [imageString, setImageString] = useState('');
+const Create = ({ isBeingEdited = false, post = null }) => {
+	// Helper Function
+	const replaceState = (initialValue, propValue) =>
+		isBeingEdited === true ? propValue : initialValue;
+
+	const [id, setId] = useState(replaceState('', post.id));
+	const [likes, setLikes] = useState(replaceState(0, post.likes));
+	const [text, setText] = useState(replaceState('', post.text));
+	const [imageString, setImageString] = useState(replaceState('', post.image));
 	const [tagValue, setTagValue] = useState('');
-	const [tags, replaceTags] = useState([]);
+	const [tags, replaceTags] = useState(replaceState([], post.tags));
 	const [imageUploadText, setImageUploadText] = useState('Chose Image');
 
 	const addTag = () => {
@@ -36,7 +40,9 @@ const Create = () => {
 		replaceTags(newTags);
 	};
 
-	const makePostHandler = async () => {
+	// API Handlers
+
+	const createPostHandler = async () => {
 		const object = {
 			text,
 			image: imageString,
@@ -44,17 +50,29 @@ const Create = () => {
 			tags,
 			owner: id,
 		};
-		const res = await api.createPost(object);
+		await api.createPost(object);
+	};
+
+	const editPostHandler = async () => {
+		const object = {
+			text,
+			image: imageString,
+			likes,
+			tags,
+		};
+		await api.updatePost(id, object);
 	};
 
 	return (
 		<div className='create-container'>
-			<h1 className='create-header'>Create New Post</h1>
+			<h1 className='create-header'>
+				{isBeingEdited === true ? 'Edit Post' : 'Create New Post'}
+			</h1>
 			<p className='create-info'>
-				<b>Komentar:</b> API je zahtevao validan User ID da bi napravio novi
-				Post, umesto da pravim posebnu stranicu za pravljenje novih korisnika,
-				nalepio sam par vec postojecih ID-ova koji samo treba da se nalepe u
-				"User ID" polje
+				<b>Komentar:</b> Kod kreiranja novih Postova, API je zahtevao validan
+				User ID da bi napravio novi Post, umesto da pravim posebnu stranicu za
+				pravljenje novih korisnika, nalepio sam par vec postojecih ID-ova koji
+				samo treba da se nalepe u "User ID" polje
 			</p>
 			<p>Sara Andersen ID: 60d21b4667d0d8992e610c85</p>
 			<p>Kenneth CarterID: 60d0fe4f5311236168a10a12</p>
@@ -63,6 +81,7 @@ const Create = () => {
 				<div className='id-container'>
 					<label>User ID: </label>
 					<input
+						disabled={isBeingEdited}
 						type='text'
 						value={id}
 						onChange={(e) => setId(e.target.value)}
@@ -117,8 +136,11 @@ const Create = () => {
 					/>
 					{imageUploadText}
 				</button>
-				<button onClick={makePostHandler} className='create-button'>
-					Create Post
+				<button
+					onClick={isBeingEdited === true ? editPostHandler : createPostHandler}
+					className='create-button'
+				>
+					{isBeingEdited === true ? 'Update Post' : 'Create Post'}
 				</button>
 				<Link to='/'>
 					<button className='create-button'>Back to Homepage</button>
@@ -127,5 +149,7 @@ const Create = () => {
 		</div>
 	);
 };
-
-export default Create;
+const mapStateToProps = (state) => ({
+	post: state.extendedPost.post,
+});
+export default connect(mapStateToProps)(Create);

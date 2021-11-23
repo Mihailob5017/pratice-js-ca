@@ -18,3 +18,5 @@ export const createPost = (postObject) =>
 	axios.post(`${BASE_URL}/post/create`, postObject);
 
 // Update a Post
+export const updatePost = (id, postObj) =>
+	axios.put(`${BASE_URL}/post/${id}`, postObj);
