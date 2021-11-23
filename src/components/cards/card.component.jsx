@@ -8,7 +8,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 // Code
-const Card = ({ id, image, text, likes, tags, owner, publishDate }) => {
+const Card = ({ id, image, text, tags, owner, publishDate }) => {
 	return (
 		<Link to={`/${id}`} className='post-card'>
 			<img className='post-img' src={image} alt={text} />

@@ -14,6 +14,7 @@ import { getSpecificPost } from '../../redux/action.creators';
 
 // Components
 import LoadingComponent from '../loading/loading.component';
+import CommentList from '../comments/comment-list.component';
 
 // Code
 const Profile = ({ post, comments }) => {
@@ -30,39 +31,32 @@ const Profile = ({ post, comments }) => {
 	}, []);
 
 	return (
-		<>
-			<div className='post-wrapper'>
-				{isLoading ? (
-					<LoadingComponent />
-				) : (
-					<>
-						<div className='post-container'>
-							<img src={post.image} alt='' />
-							<p className='single-post-title'>
-								<label>
-									{post.owner.firstName + ' ' + post.owner.lastName}
+		<div className='profile-page-wrapper'>
+			{isLoading ? (
+				<LoadingComponent />
+			) : (
+				<div className='post-container'>
+					<img src={post.image} alt='' />
+					<p className='single-post-title'>
+						<label>{post.owner.firstName + ' ' + post.owner.lastName}</label>
+						{' ' + post.text}
+					</p>
+					<div className='single-post-info'>
+						<div>
+							{post.likes} <img src={LikeSvg} alt='Like SVG' />
+							{post.tags.map((el, i) => (
+								<label key={i} className='tag'>
+									{el}
 								</label>
-								{' ' + post.text}
-							</p>
-							<div className='single-post-info'>
-								<div>
-									{post.likes} <img src={LikeSvg} alt='Like SVG' />
-									{post.tags.map((el, i) => (
-										<label key={i} className='tag'>
-											{el}
-										</label>
-									))}
-								</div>
-								<p>{moment(post.publishDate).format('MMMM Do YYYY')}</p>
-							</div>
+							))}
 						</div>
-					</>
-				)}
-			</div>
-			<div className='comments-container'>
-				{isLoading ? <LoadingComponent /> : <>loaded</>}
-			</div>
-		</>
+						<p>{moment(post.publishDate).format('MMMM Do YYYY')}</p>
+					</div>
+				</div>
+			)}
+
+			{isLoading ? <LoadingComponent /> : <CommentList comments={comments} />}
+		</div>
 	);
 };
 
