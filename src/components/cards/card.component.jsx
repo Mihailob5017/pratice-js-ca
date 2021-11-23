@@ -1,6 +1,5 @@
 import React from 'react';
 import './card.style.css';
-import LikeSvg from '../../svg/like.svg';
 
 // Moment
 import moment from 'moment';
@@ -9,9 +8,9 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 // Code
-const Card = ({ id, key, image, text, likes, tags, owner, publishDate }) => {
+const Card = ({ id, image, text, likes, tags, owner, publishDate }) => {
 	return (
-		<Link to={`/${id}`} key={key} className='post-card'>
+		<Link to={`/${id}`} className='post-card'>
 			<img className='post-img' src={image} alt={text} />
 			<div className='post-info'>
 				{/* Text */}
@@ -26,9 +25,10 @@ const Card = ({ id, key, image, text, likes, tags, owner, publishDate }) => {
 				</p>
 				{/* Likes / Tags */}
 				<p className='post-text post-likes'>
-					{likes} <img src={LikeSvg} alt='Like SVG' />
-					{tags.map((el) => (
-						<label className='tag'>{el}</label>
+					{tags.map((el, i) => (
+						<label key={i} className='tag'>
+							{el}
+						</label>
 					))}
 				</p>
 			</div>
