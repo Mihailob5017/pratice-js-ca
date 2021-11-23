@@ -27,27 +27,22 @@ const Profile = ({ post, comments }) => {
 	const [isLoading, setLoading] = useState(true);
 	const dispatch = useDispatch();
 
-	const addCommentHandler = (firstname, lastname, message) => {
-		if (message === '' || firstname === '' || lastname === '') {
+	const addCommentHandler = (message) => {
+		if (message === '') {
 			alert('Please write something first');
 			return;
 		}
 
-		const commentObject = {
-			id: uuid4(),
+		const comment = {
+			post: post.id,
 			message,
-			publishDate: new Date(),
-			owner: {
-				id: uuid4(),
-				firstName: firstname,
-				lastName: lastname,
-			},
+			owner: post.owner.id,
 		};
-		const newValue = {
+		const objectValues = {
 			post,
-			comments: [...comments, commentObject],
+			comments,
 		};
-		dispatch(addComment(newValue));
+		dispatch(addComment(objectValues, comment));
 	};
 
 	useEffect(async () => {

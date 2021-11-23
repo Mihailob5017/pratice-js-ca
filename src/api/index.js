@@ -13,6 +13,10 @@ export const getSinglePost = (id) => axios.get(`${BASE_URL}/post/${id}`);
 // Get Comments
 export const getComments = (id) => axios.get(`${BASE_URL}/post/${id}/comment`);
 
+// Create Comment
+export const addComment = (comment) =>
+	axios.post(`${BASE_URL}/comment/create`, comment);
+
 // Create a Post
 export const createPost = (postObject) =>
 	axios.post(`${BASE_URL}/post/create`, postObject);
