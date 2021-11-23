@@ -6,13 +6,19 @@ import Comment from './comment.component';
 
 //  Code
 const CommentList = ({ comments }) => {
-	console.log(comments);
 	return (
 		<div className='comment-container'>
 			<h1 className='comment-header'>Comments</h1>
-			{comments.map((comment) => (
-				<Comment key={comment.id} {...comment} />
-			))}
+			{comments.length > 0 ? (
+				comments.map((comment) => <Comment key={comment.id} {...comment} />)
+			) : (
+				<h1 className='no-comments'>Be the first one to comment!</h1>
+			)}
+
+			<div className='add-comment-option'>
+				<textarea></textarea>
+				<button>Comment</button>
+			</div>
 		</div>
 	);
 };

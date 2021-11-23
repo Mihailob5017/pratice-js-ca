@@ -35,3 +35,43 @@
 	padding: 0;
 	margin: 0 5px 10px 5px;
 }
+
+.add-comment-option {
+	margin: 15px 0;
+	padding: 15px;
+	border-top: 1px solid #aaa;
+	display: flex;
+	flex-direction: row;
+}
+.add-comment-option textarea {
+	width: 75%;
+	resize: none;
+	font-size: 16px;
+	outline: none;
+	height: 120px;
+}
+.no-comments {
+	display: block;
+	width: fit-content;
+	margin: 25px auto;
+	font-size: 24px;
+	font-weight: normal;
+	color: #666;
+}
+.add-comment-option button {
+	margin-left: 10px;
+	height: fit-content;
+	background: rgb(9, 46, 105);
+	font-size: 24px;
+	color: white;
+	font-weight: bold;
+	padding: 5px 15px;
+	border-radius: 3px;
+	border: transparent;
+	cursor: pointer;
+}
+
+.add-comment-option button:hover {
+	background: rgb(1, 27, 65);
+	transition: 300ms;
+}
