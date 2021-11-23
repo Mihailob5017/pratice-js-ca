@@ -1,4 +1,4 @@
-import { GET_ALL_POSTS, GET_SPECIFIC_POST } from './action.types';
+import { ADD_COMMENT, GET_ALL_POSTS, GET_SPECIFIC_POST } from './action.types';
 import * as api from '../api/index';
 
 // Get all posts from the API
@@ -36,3 +36,9 @@ export const getSpecificPost = (id) => async (dispatch) => {
 		console.error(error);
 	}
 };
+
+// Add a comment to redux only
+export const addComment = (newObject) => ({
+	type: ADD_COMMENT,
+	payload: newObject,
+});

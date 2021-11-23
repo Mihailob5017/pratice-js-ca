@@ -5,12 +5,15 @@ import LikeSvg from '../../svg/like.svg';
 // Moment
 import moment from 'moment';
 
+// Generate ID
+import { v4 as uuid4 } from 'uuid';
+
 // React Router
 import { useLocation } from 'react-router-dom';
 
 // Redux
 import { useDispatch, connect } from 'react-redux';
-import { getSpecificPost } from '../../redux/action.creators';
+import { addComment, getSpecificPost } from '../../redux/action.creators';
 
 // Components
 import LoadingComponent from '../loading/loading.component';
@@ -24,6 +27,29 @@ const Profile = ({ post, comments }) => {
 
 	const [isLoading, setLoading] = useState(true);
 	const dispatch = useDispatch();
+
+	const addCommentHandler = (firstname, lastname, message) => {
+		if (message === '' || firstname === '' || lastname === '') {
+			alert('Please write something first');
+			return;
+		}
+
+		const commentObject = {
+			id: uuid4(),
+			message,
+			publishDate: new Date(),
+			owner: {
+				id: uuid4(),
+				firstName: firstname,
+				lastName: lastname,
+			},
+		};
+		const newValue = {
+			post,
+			comments: [...comments, commentObject],
+		};
+		dispatch(addComment(newValue));
+	};
 
 	useEffect(async () => {
 		await dispatch(getSpecificPost(id));
@@ -55,7 +81,11 @@ const Profile = ({ post, comments }) => {
 				</div>
 			)}
 
-			{isLoading ? <LoadingComponent /> : <CommentList comments={comments} />}
+			{isLoading ? (
+				<LoadingComponent />
+			) : (
+				<CommentList handleComment={addCommentHandler} comments={comments} />
+			)}
 		</div>
 	);
 };

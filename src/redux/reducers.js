@@ -1,4 +1,4 @@
-import { GET_ALL_POSTS, GET_SPECIFIC_POST } from './action.types';
+import { ADD_COMMENT, GET_ALL_POSTS, GET_SPECIFIC_POST } from './action.types';
 
 const initialState = {
 	posts: [],
@@ -14,6 +14,12 @@ const rootReducer = (state = initialState, action) => {
 			};
 
 		case GET_SPECIFIC_POST:
+			return {
+				...state,
+				extendedPost: action.payload,
+			};
+
+		case ADD_COMMENT:
 			return {
 				...state,
 				extendedPost: action.payload,
