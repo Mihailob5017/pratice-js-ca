@@ -1,17 +1,37 @@
-import { GET_ALL_POSTS } from './action.types';
+import { GET_ALL_POSTS, GET_SPECIFIC_POST } from './action.types';
 import * as api from '../api/index';
 
-// Get all users from the API
+// Get all posts from the API
 export const getAllPosts = () => async (dispatch) => {
 	try {
 		const { data } = await api.getAllPosts();
 
-		// Sort by Dates
-		const sortedData = data.data.sort(
-			(a, b) => new Date(b.publishDate) - new Date(a.publishDate)
-		);
+		/*
+		  Note: Data is already sorted by dates in the API, but this is how I would sort it.
 
-		dispatch({ type: GET_ALL_POSTS, payload: sortedData });
+		 const sortedData = data.data.sort(
+		 	(a, b) => new Date(b.publishDate) - new Date(a.publishDate)
+		  );
+		*/
+
+		dispatch({ type: GET_ALL_POSTS, payload: data.data });
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+// Get one extended post by ID
+export const getSpecificPost = (id) => async (dispatch) => {
+	try {
+		const [post, comments] = await Promise.all([
+			api.getSinglePost(id).then((el) => el.data),
+			api.getComments(id).then((el) => el.data.data),
+		]);
+
+		dispatch({
+			type: GET_SPECIFIC_POST,
+			payload: { post, comments: [...comments] },
+		});
 	} catch (error) {
 		console.error(error);
 	}

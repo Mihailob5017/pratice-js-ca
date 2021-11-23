@@ -1,7 +1,8 @@
-import { GET_ALL_POSTS } from './action.types';
+import { GET_ALL_POSTS, GET_SPECIFIC_POST } from './action.types';
 
 const initialState = {
 	posts: [],
+	extendedPost: {},
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -11,6 +12,13 @@ const rootReducer = (state = initialState, action) => {
 				...state,
 				posts: action.payload,
 			};
+
+		case GET_SPECIFIC_POST:
+			return {
+				...state,
+				extendedPost: action.payload,
+			};
+
 		default:
 			return state;
 	}

@@ -6,3 +6,9 @@ axios.defaults.headers['app-id'] = '619ba2328213396838ca56c4';
 
 // Get all Posts
 export const getAllPosts = () => axios.get(`${BASE_URL}/post`);
+
+// Get single Post
+export const getSinglePost = (id) => axios.get(`${BASE_URL}/post/${id}`);
+
+// Get Comments
+export const getComments = (id) => axios.get(`${BASE_URL}/post/${id}/comment`);
