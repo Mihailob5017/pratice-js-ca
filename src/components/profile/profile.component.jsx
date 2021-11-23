@@ -9,7 +9,7 @@ import moment from 'moment';
 import { v4 as uuid4 } from 'uuid';
 
 // React Router
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 // Redux
 import { useDispatch, connect } from 'react-redux';
@@ -58,6 +58,15 @@ const Profile = ({ post, comments }) => {
 
 	return (
 		<div className='profile-page-wrapper'>
+			<div className='profile-header'>
+				<Link to={`/${id}/edit`}>
+					<button className='link-btn'>Edit</button>
+				</Link>
+				<Link to='/'>
+					<button className='link-btn'>Back</button>
+				</Link>
+			</div>
+
 			{isLoading ? (
 				<LoadingComponent />
 			) : (
