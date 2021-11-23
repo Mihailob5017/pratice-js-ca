@@ -58,6 +58,66 @@
 	font-size: 18px;
 }
 
+.tags-container {
+	margin: 20px 0;
+	width: 100%;
+	padding: 10px 0;
+	border-top: 1px solid #aaa;
+}
+.tags-container label {
+	font-size: 18px;
+}
+.tags-container input {
+	margin: 0 20px;
+	font-size: 18px;
+	outline: none;
+}
+.add-tags-btn {
+	background: rgb(9, 46, 105);
+	font-size: 18px;
+	border-radius: 3px;
+	padding: 5px 15px;
+	cursor: pointer;
+	border: transparent;
+	color: white;
+	cursor: pointer;
+}
+.add-tags-btn:hover {
+	background: rgb(1, 27, 65);
+	transition: 300ms;
+}
+.tags-display {
+	margin: 10px 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+.tag {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0 2px;
+	border-radius: 5px;
+	font-weight: bold;
+	background: rgb(9, 46, 105);
+	padding: 2.5px 7.5px;
+	color: #f1f1f1;
+}
+.tag button:hover {
+	background: white;
+	color: rgb(1, 27, 65);
+	transition: 300ms;
+}
+.tag button {
+	background: transparent;
+	color: white;
+	border: 1px solid white;
+	cursor: pointer;
+	margin-left: 10px;
+	border-radius: 3px;
+}
+
 .buttons-container {
 	margin: 20px 0;
 	width: 100%;
