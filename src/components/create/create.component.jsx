@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './create.style.css';
 
+import * as api from '../../api/index';
+
 // React Filebase
 import FileBase from 'react-file-base64';
 
 // React Router Dom
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Redux
-import { connect, useDispatch } from 'react-redux';
-import {} from '../../redux/action.creators';
+import { connect } from 'react-redux';
 
 // Code
 const Create = () => {
@@ -18,7 +19,7 @@ const Create = () => {
 	const [text, setText] = useState('');
 	const [imageString, setImageString] = useState('');
 	const [tagValue, setTagValue] = useState('');
-	const [tags, replaceTags] = useState(['dog', 'cat', 'mountain']);
+	const [tags, replaceTags] = useState([]);
 	const [imageUploadText, setImageUploadText] = useState('Chose Image');
 
 	const addTag = () => {
@@ -33,6 +34,17 @@ const Create = () => {
 	const removeTag = (tagValue) => {
 		const newTags = tags.filter((tag) => tag !== tagValue);
 		replaceTags(newTags);
+	};
+
+	const makePostHandler = async () => {
+		const object = {
+			text,
+			image: imageString,
+			likes,
+			tags,
+			owner: id,
+		};
+		const res = await api.createPost(object);
 	};
 
 	return (
@@ -105,7 +117,9 @@ const Create = () => {
 					/>
 					{imageUploadText}
 				</button>
-				<button className='create-button'>Create Post</button>
+				<button onClick={makePostHandler} className='create-button'>
+					Create Post
+				</button>
 				<Link to='/'>
 					<button className='create-button'>Back to Homepage</button>
 				</Link>
