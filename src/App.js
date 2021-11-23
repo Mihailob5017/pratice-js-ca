@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Components
 import Homepage from './components/home/home.component';
+import Profile from './components/profile/profile.component';
 
 // Code
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
 			<div className='container'>
 				<Routes>
 					<Route path='/' exact element={<Homepage />} />
+					<Route path='/:id' element={<Profile />} />
 				</Routes>
 			</div>
 		</BrowserRouter>
