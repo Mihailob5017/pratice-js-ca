@@ -12,6 +12,9 @@ import { Link, useNavigate } from 'react-router-dom';
 // Redux
 import { connect } from 'react-redux';
 
+// Components
+import Input from '../input/input.component';
+
 // Code
 const Create = ({ isBeingEdited = false, post = {} }) => {
 	const navigate = useNavigate();
@@ -86,24 +89,21 @@ const Create = ({ isBeingEdited = false, post = {} }) => {
 			<p>Sara Andersen ID: 60d21b4667d0d8992e610c85</p>
 			<p>Kenneth CarterID: 60d0fe4f5311236168a10a12</p>
 			<p>Vaino Sakala ID: 60d0fe4f5311236168a10a1a</p>
-			<div className='input-container'>
-				<div className='id-container'>
-					<label>User ID: </label>
-					<input
-						disabled={isBeingEdited}
-						type='text'
-						value={id}
-						onChange={(e) => setId(e.target.value)}
-					/>
-				</div>
-				<div className='likes-container'>
-					<label>Like Count: </label>
-					<input
-						type='number'
-						value={likes}
-						onChange={(e) => setLikes(e.target.value)}
-					/>
-				</div>
+			<div className='input-wrapper'>
+				<Input
+					label='Owner ID: '
+					name='post-id'
+					disabled={isBeingEdited}
+					value={id}
+					handleChange={setId}
+				/>
+				<Input
+					label='Like Count: '
+					type='number'
+					value={likes}
+					handleChange={setLikes}
+					name='post-likes'
+				/>
 			</div>
 
 			<div className='text-container'>
