@@ -30,7 +30,9 @@ const Create = ({ isBeingEdited = false, post = {} }) => {
 	const [imageString, setImageString] = useState(replaceState('', post.image));
 	const [tagValue, setTagValue] = useState('');
 	const [tags, replaceTags] = useState(replaceState([], post.tags));
-	const [imageUploadText, setImageUploadText] = useState('Chose Image');
+	const [imageUploadText, setImageUploadText] = useState(
+		isBeingEdited ? 'Replace Image' : 'Chose Image'
+	);
 
 	const addTag = () => {
 		if (tagValue === '') {
