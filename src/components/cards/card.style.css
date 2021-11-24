@@ -133,14 +133,19 @@
 	}
 	.post-info {
 		height: 140px;
+		overflow: hidden;
 	}
 	.post-text {
-		font-size: 14px;
+		margin: 2.5px 5px;
+		font-weight: normal;
+		color: #555;
+		font-size: 12px;
 	}
 	.post-name {
 		font-weight: normal;
 		color: #333;
-		font-size: 16px;
+		margin-bottom: 10px;
+		font-size: 14px;
 	}
 	.post-likes {
 		flex: 1;
