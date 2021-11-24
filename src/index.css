@@ -1,3 +1,7 @@
+div {
+	overflow-x: hidden; /* Hide horizontal scrollbar */
+	overflow-y: scroll; /* Add vertical scrollbar */
+}
 * {
 	text-decoration: none !important;
 }

@@ -78,3 +78,20 @@
 	background: rgb(1, 27, 65);
 	transition: 300ms;
 }
+
+@media screen and (max-width: 650px) {
+	.comment-header {
+		margin-left: 10px;
+		font-size: 20px;
+	}
+	.no-comments {
+		font-size: 18px;
+	}
+	.add-comment-option button {
+		font-size: 20px;
+	}
+	.add-comment-option textarea {
+		height: 80px;
+		font-size: 14px;
+	}
+}

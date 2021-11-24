@@ -1,6 +1,7 @@
 .homepage-header {
 	color: rgb(9, 46, 105);
 }
+
 .add-btn {
 	margin: 10px auto;
 	background: rgb(9, 46, 105);
@@ -24,4 +25,15 @@
 	margin-right: 2px;
 	width: 24px;
 	height: 24px;
+}
+@media screen and (max-width: 1200px) {
+	.homepage-header {
+		margin: 0;
+	}
+}
+@media screen and (max-width: 600px) {
+	.homepage-header {
+		margin: 0;
+		text-align: center;
+	}
 }

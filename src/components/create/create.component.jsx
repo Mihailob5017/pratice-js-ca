@@ -13,12 +13,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // Code
-const Create = ({ isBeingEdited = false, post = null }) => {
+const Create = ({ isBeingEdited = false, post = {} }) => {
 	const navigate = useNavigate();
 
 	// Helper Function
 	const replaceState = (initialValue, propValue) =>
-		isBeingEdited ? propValue : initialValue;
+		isBeingEdited === true ? propValue : initialValue;
 
 	// State
 	const [id, setId] = useState(replaceState('', post.id));
