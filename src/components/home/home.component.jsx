@@ -28,7 +28,7 @@ const Homepage = ({ posts }) => {
 			<h1 className='homepage-header'>All Posts</h1>
 			{isLoading === true ? <Loading /> : <CardList posts={posts} />}
 			<Link to='/create'>
-				<button className='add-btn'>
+				<button className='add-btn primary-btn '>
 					<img src={AddIcon} alt='Add Svg' />
 					Add Post
 				</button>

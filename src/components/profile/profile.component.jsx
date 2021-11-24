@@ -54,10 +54,10 @@ const Profile = ({ post, comments }) => {
 		<div className='profile-page-wrapper'>
 			<div className='profile-header'>
 				<Link to={`/${id}/edit`}>
-					<button className='link-btn'>Edit</button>
+					<button className='primary-btn link-btn'>Edit</button>
 				</Link>
 				<Link to='/'>
-					<button className='link-btn'>Back</button>
+					<button className='primary-btn link-btn'>Back</button>
 				</Link>
 			</div>
 

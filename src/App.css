@@ -4,6 +4,21 @@
 	margin: 30px auto;
 	overflow-y: hidden;
 }
+
+.primary-btn {
+	background: rgb(9, 46, 105);
+	color: white;
+	font-weight: bold;
+	padding: 5px 15px;
+	border-radius: 3px;
+	border: transparent;
+	cursor: pointer;
+}
+.primary-btn:hover {
+	background: rgb(1, 27, 65);
+	transition: 300ms;
+}
+
 @media screen and (max-width: 1200px) {
 	.container {
 		overflow-y: scroll;

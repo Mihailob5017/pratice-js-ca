@@ -56,19 +56,9 @@
 	outline: none;
 }
 .add-tags-btn {
-	background: rgb(9, 46, 105);
 	font-size: 18px;
-	border-radius: 3px;
-	padding: 5px 15px;
-	cursor: pointer;
-	border: transparent;
-	color: white;
-	cursor: pointer;
 }
-.add-tags-btn:hover {
-	background: rgb(1, 27, 65);
-	transition: 300ms;
-}
+
 .tags-display {
 	margin: 10px 0;
 	display: flex;
@@ -113,18 +103,7 @@
 
 .create-button {
 	position: relative;
-	background: rgb(9, 46, 105);
 	font-size: 24px;
-	border-radius: 3px;
-	padding: 5px 15px;
-	cursor: pointer;
-	border: transparent;
-	color: white;
-	cursor: pointer;
-}
-.create-button:hover {
-	background: rgb(1, 27, 65);
-	transition: 300ms;
 }
 
 .create-button input {

@@ -27,7 +27,9 @@ const CommentList = ({ comments, handleComment }) => {
 					value={comment}
 					onChange={(e) => setComment(e.target.value)}
 				></textarea>
-				<button onClick={commentHandler}>Comment</button>
+				<button className='primary-btn ' onClick={commentHandler}>
+					Comment
+				</button>
 			</div>
 		</div>
 	);

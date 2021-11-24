@@ -119,7 +119,7 @@ const Create = ({ isBeingEdited = false, post = {} }) => {
 					value={tagValue}
 					onChange={(e) => setTagValue(e.target.value)}
 				/>
-				<button className='add-tags-btn' onClick={addTag}>
+				<button className='primary-btn add-tags-btn' onClick={addTag}>
 					Add Tags
 				</button>
 				<div className='tags-display'>
@@ -134,7 +134,7 @@ const Create = ({ isBeingEdited = false, post = {} }) => {
 				</div>
 			</div>
 			<div className='buttons-container'>
-				<button className='create-button'>
+				<button className='primary-btn create-button'>
 					<FileBase
 						type='file'
 						multiple={false}
@@ -147,12 +147,14 @@ const Create = ({ isBeingEdited = false, post = {} }) => {
 				</button>
 				<button
 					onClick={isBeingEdited ? editPostHandler : createPostHandler}
-					className='create-button'
+					className='primary-btn create-button'
 				>
 					{isBeingEdited ? 'Update Post' : 'Create Post'}
 				</button>
 				<Link to='/'>
-					<button className='create-button'>Back to Homepage</button>
+					<button className='primary-btn create-button'>
+						Back to Homepage
+					</button>
 				</Link>
 			</div>
 		</div>

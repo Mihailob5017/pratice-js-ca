@@ -4,23 +4,13 @@
 
 .add-btn {
 	margin: 10px auto;
-	background: rgb(9, 46, 105);
 	font-size: 24px;
-	border-radius: 3px;
-	padding: 5px 15px;
-	cursor: pointer;
-	border: transparent;
-	color: white;
 	display: flex;
-	font-weight: bold;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 }
-.add-btn:hover {
-	background: rgb(1, 27, 65);
-	transition: 300ms;
-}
+
 .add-btn img {
 	margin-right: 2px;
 	width: 24px;
