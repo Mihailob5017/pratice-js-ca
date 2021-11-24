@@ -50,29 +50,10 @@
 	display: flex;
 	flex-direction: row;
 }
-.add-name {
-	display: block;
-	margin-bottom: 0;
-	border-top: 1px solid #aaa;
-}
 .add-value {
 	margin-top: 0;
-	align-items: flex-end;
 }
-.input-container {
-	width: 75%;
-	display: flex;
-	flex-direction: row;
-}
-.input-container:first-child {
-	margin: 10px 0;
-}
-.input-container input {
-	margin-left: 10px;
-	font-size: 20px;
-	outline: none;
-	flex: 1;
-}
+
 .add-comment-option textarea {
 	width: 75%;
 	resize: none;
@@ -96,4 +77,21 @@
 .add-comment-option button:hover {
 	background: rgb(1, 27, 65);
 	transition: 300ms;
+}
+
+@media screen and (max-width: 650px) {
+	.comment-header {
+		margin-left: 10px;
+		font-size: 20px;
+	}
+	.no-comments {
+		font-size: 18px;
+	}
+	.add-comment-option button {
+		font-size: 20px;
+	}
+	.add-comment-option textarea {
+		height: 80px;
+		font-size: 14px;
+	}
 }

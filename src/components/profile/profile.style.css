@@ -80,3 +80,53 @@
 	padding: 2.5px 7.5px;
 	color: #f1f1f1;
 }
+
+@media screen and (max-width: 820px) {
+	.profile-page-wrapper {
+		width: 100%;
+		overflow: hidden;
+		height: fit-content;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.profile-header {
+		justify-content: space-evenly;
+	}
+	.link-btn {
+		padding: 5px 30px;
+	}
+
+	.single-post-title {
+		font-size: 16px;
+		font-weight: normal;
+		color: #444;
+	}
+	.single-post-title label {
+		margin-right: 10px;
+		font-weight: normal;
+		color: black;
+	}
+
+	.single-post-info div {
+		font-size: 16px;
+	}
+	.single-post-info p {
+		font-size: 16px;
+	}
+	.single-post-info img {
+		width: 18px;
+		height: 18px;
+		margin: 0 8px;
+	}
+}
+@media screen and (max-width: 500px) {
+	.single-post-info {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column !important;
+	}
+	.single-post-info p {
+		color: #444;
+	}
+}

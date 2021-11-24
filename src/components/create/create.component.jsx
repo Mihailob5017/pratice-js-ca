@@ -7,17 +7,20 @@ import * as api from '../../api/index';
 import FileBase from 'react-file-base64';
 
 // React Router Dom
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
 
 // Code
-const Create = ({ isBeingEdited = false, post = null }) => {
+const Create = ({ isBeingEdited = false, post = {} }) => {
+	const navigate = useNavigate();
+
 	// Helper Function
 	const replaceState = (initialValue, propValue) =>
 		isBeingEdited === true ? propValue : initialValue;
 
+	// State
 	const [id, setId] = useState(replaceState('', post.id));
 	const [likes, setLikes] = useState(replaceState(0, post.likes));
 	const [text, setText] = useState(replaceState('', post.text));
@@ -42,6 +45,7 @@ const Create = ({ isBeingEdited = false, post = null }) => {
 
 	// API Handlers
 
+	// Create New Post
 	const createPostHandler = async () => {
 		const object = {
 			text,
@@ -51,8 +55,11 @@ const Create = ({ isBeingEdited = false, post = null }) => {
 			owner: id,
 		};
 		await api.createPost(object);
+		alert('Post Successfully Created');
+		navigate('/');
 	};
 
+	// Edit Post
 	const editPostHandler = async () => {
 		const object = {
 			text,
@@ -61,12 +68,14 @@ const Create = ({ isBeingEdited = false, post = null }) => {
 			tags,
 		};
 		await api.updatePost(id, object);
+		alert('Post Successfully Updated');
+		navigate('/');
 	};
 
 	return (
 		<div className='create-container'>
 			<h1 className='create-header'>
-				{isBeingEdited === true ? 'Edit Post' : 'Create New Post'}
+				{isBeingEdited ? 'Edit Post' : 'Create New Post'}
 			</h1>
 			<p className='create-info'>
 				<b>Komentar:</b> Kod kreiranja novih Postova, API je zahtevao validan
@@ -137,10 +146,10 @@ const Create = ({ isBeingEdited = false, post = null }) => {
 					{imageUploadText}
 				</button>
 				<button
-					onClick={isBeingEdited === true ? editPostHandler : createPostHandler}
+					onClick={isBeingEdited ? editPostHandler : createPostHandler}
 					className='create-button'
 				>
-					{isBeingEdited === true ? 'Update Post' : 'Create Post'}
+					{isBeingEdited ? 'Update Post' : 'Create Post'}
 				</button>
 				<Link to='/'>
 					<button className='create-button'>Back to Homepage</button>
